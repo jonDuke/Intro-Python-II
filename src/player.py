@@ -1,6 +1,8 @@
 # Write a class to hold player information, e.g. what room they are in
 # currently.
 
+from item import LightSource
+
 class Player():
     """
     The Player class, keeps track of which room the player is in
@@ -32,3 +34,21 @@ class Player():
                 return
         
         print(f"You don't have a {item_name} to drop!")
+    
+    def has_light(self):
+        """ returns true if the player is holding a light """
+        for item in self.items:
+            if type(item) == LightSource:
+                return True
+
+        # else
+        return False
+    
+    def has_item(self, item_name):
+        """ returns true if the player has the given item """
+        for item in self.items:
+            if item.name == item_name:
+                return True
+
+        # else
+        return False
